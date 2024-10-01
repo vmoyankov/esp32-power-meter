@@ -1,5 +1,6 @@
 import json
 import machine
+import ntptime
 import time
 import uasyncio as asyncio
 
@@ -213,6 +214,7 @@ def main():
     global dev
 
     do_connect()
+    ntptime.settime()
     
     # define hardware uart
     uart = machine.UART(1, baudrate=9600, rx=11, tx=12)
