@@ -86,7 +86,8 @@ class PZEM:
 
         # set uart & update field
         self.uart = uart
-        self.uart.init(bits=8, parity=None, stop=1, baudrate=9600, timeout=500)
+        self.uart.init(bits=8, parity=None, stop=1, baudrate=9600, 
+                timeout=200, timeout_char=100)
 
         # chech the address field
         if self.checkAddr(addr=addr):
@@ -263,7 +264,7 @@ class PZEM:
         # Send frame to the UART port
         self.uart.write(self.frame)
         # print(f"UART snd: {self.frame}")
-        time.sleep(1)
+        #time.sleep(0.2)
 
         # Read the response, maximun 25 bytes
         # (25 bytes = (2 * 10 + 1 + 1 + 1 ) + 2 CRC )
