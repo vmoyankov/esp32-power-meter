@@ -3,6 +3,7 @@ import machine
 import ntptime
 import time
 import uasyncio as asyncio
+import gc
 
 from pzem import PZEM
 import web
@@ -60,6 +61,8 @@ powermeter_current {dev.getCurrent()}
 powermeter_power {dev.getActivePower()}
 powermeter_pf {dev.getPowerFactor()}
 powermeter_energy {dev.getActiveEnergy()}
+python_gc_mem_alloc {gc.mem_alloc()}
+python_gc_mem_free {gc.mem_free()}
 '''.encode()
     
     w.write(data)
